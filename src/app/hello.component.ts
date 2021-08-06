@@ -1,13 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { Http } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
-
 @Component({
   selector: 'hello',
-  template: `
-    <h1>Hello {{ name }}!</h1>
-  `,
+  templateUrl: 'hello.component.html',
   styles: [
     `
       h1 {
@@ -18,10 +13,12 @@ import 'rxjs/add/operator/map';
 })
 export class HelloComponent {
   @Input() name: string;
+  profile: any;
   constructor(private http: Http) {}
-  getMovie(): Observable<any> {
-    return this.http
+  getMovie() {
+    this.profile = this.http
       .get('http://www.omdbapi.com/?i=tt3896198&apikey=5b8ebe9f')
-      .map((response: any) => response.json);
+      .subcribe((response: any) => response);
+    return this.profile;
   }
 }
