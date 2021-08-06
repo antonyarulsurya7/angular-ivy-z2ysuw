@@ -15,10 +15,5 @@ export class HelloComponent {
   @Input() name: string;
   profile: any;
   constructor(private http: Http) {}
-  getMovie() {
-    this.profile = this.http
-      .get('http://www.omdbapi.com/?i=tt3896198&apikey=5b8ebe9f')
-      .subcribe((response: any) => response);
-    return this.profile;
-  }
+  
 }
