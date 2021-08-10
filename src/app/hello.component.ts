@@ -21,6 +21,5 @@ export class HelloComponent implements OnInit {
     this.moviedetails
       .getMovie()
       .subscribe(movieData => (this.profile = movieData));
-    console.log(this.profile);
   }
 }
