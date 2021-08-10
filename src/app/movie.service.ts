@@ -9,14 +9,10 @@ export class MovieService {
 
   getMovie(): Observable<any> {
     return this.http
-      .get('http://www.omdbapi.com/?i=tt3896198&apikey=5b8ebe9f')
+      .get('http://www.7timer.info/bin/api.pl?lon=113.17&lat=23.09&product=astro&output=json')
       .pipe(
-        map((response: Response) => response.json),
-        catchError(this.handleError)
+        map((response: Response) => response.json)
       );
   }
-  handleError(error: Response) {
-    console.error(error);
-    return Observable.throw(error);
-  }
+ 
 }
