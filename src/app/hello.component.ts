@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
-import { Http } from '@angular/http';
+import { Component, Input, OnInit } from '@angular/core';
+import { MovieService } from './movie.service';
+
 @Component({
   selector: 'hello',
   templateUrl: 'hello.component.html',
@@ -9,11 +10,17 @@ import { Http } from '@angular/http';
         font-family: Lato;
       }
     `
-  ]
+  ],
+  providers: [MovieService]
 })
-export class HelloComponent {
+export class HelloComponent implements OnInit {
   @Input() name: string;
   profile: any;
-  constructor(private http: Http) {}
-  
+  constructor(private moviedetails: MovieService) {}
+  ngOnInit() {
+    this.moviedetails
+      .getMovie()
+      .subscribe(movieData => (this.profile = movieData));
+    console.log(this.profile);
+  }
 }

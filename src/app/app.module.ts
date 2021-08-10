@@ -5,10 +5,12 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { HelloComponent } from './hello.component';
+import { MovieService } from './movie.service';
 
 @NgModule({
   imports: [BrowserModule, FormsModule, HttpModule],
   declarations: [AppComponent, HelloComponent],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers: [MovieService]
 })
 export class AppModule {}
